@@ -9,7 +9,7 @@ import { Post } from './post.model';
 export class PostsService {
   private posts: Post[] = [];
   private postsUpdated = new Subject<Post[]>();
-
+  
   constructor(private http: HttpClient) {
 
   }
@@ -29,6 +29,10 @@ export class PostsService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
       });
+  }
+
+  getPost(id: string) {
+    return {...this.posts.find(p => p.id === id)};
   }
 
   getPostUpdateListener() {
