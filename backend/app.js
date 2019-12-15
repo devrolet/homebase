@@ -6,7 +6,7 @@ const Post = require('./models/post');
 
 const app = express();
 
-mongoose.connect("mongodb+srv://chill-admin:hiOpfvgifqy9p0qS@cluster0-i6d13.mongodb.net/homebase?retryWrites=true&w=majority")
+mongoose.connect("Enter MongoDB Credentials Here")
   .then(() => {
     console.log('Connected to cloud database');
   })
