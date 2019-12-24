@@ -10,13 +10,13 @@ import { Post } from './post.model';
 export class PostsService {
   private posts: Post[] = [];
   private postsUpdated = new Subject<{posts: Post[], postCount: number}>();
-  
+
   constructor(private http: HttpClient, private router: Router) {
 
   }
 
   getPosts(postsPerPage: number, currentPage: number) {
-    const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`
+    const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
     this.http.get<{ message: string, posts: any, maxPosts: number }>('http://localhost:3000/api/posts' + queryParams)
       .pipe(map((postData) => {
         return { posts: postData.posts.map(post => {
@@ -26,7 +26,7 @@ export class PostsService {
             id: post._id,
             imagePath: post.imagePath
           };
-        }), 
+        }),
         maxPosts: postData.maxPosts
       };
     }))
@@ -45,7 +45,7 @@ export class PostsService {
 
   getPost(id: string) {
     return this.http.get<{ _id: string, title: string, content: string, imagePath: string }>('http://localhost:3000/api/posts/' + id);
-  };
+  }
 
   addPost(title: string, content: string, image: File) {
     const postData = new FormData();
@@ -66,15 +66,15 @@ export class PostsService {
     let postData: Post | FormData;
     if (typeof image === 'object') {
       postData = new FormData();
-      postData.append('id', id)
+      postData.append('id', id);
       postData.append('title', title);
       postData.append('content', content);
       postData.append('image', image, title);
     } else {
       postData = {
-        id: id,
-        title: title,
-        content: content,
+        id,
+        title,
+        content,
         imagePath: image
       };
     }
