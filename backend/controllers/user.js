@@ -44,7 +44,8 @@ exports.createUser = (req, res, next) => {
           });
         }
         const token = jwt.sign(
-          { email: fetchedUser.email, userId: fetchedUser._id}, 'secret_project_babies_eventually_become_billionaires',
+          { email: fetchedUser.email, userId: fetchedUser._id}, 
+          process.env.JWT_KEY,
           { expiresIn: '1h' }
         );
         res.status(200).json({

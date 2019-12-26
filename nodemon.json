@@ -1,0 +1,6 @@
+{
+  "env": {
+    "MONGO_ATLAS_PW": "hiOpfvgifqy9p0qS",
+    "JWT_KEY": "secret_project_babies_eventually_become_billionaires"
+  }
+}
