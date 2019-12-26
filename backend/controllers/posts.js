@@ -37,8 +37,8 @@ exports.updatePost = (req, res, next) => {
     imagePath: imagePath,
     creator: req.userData.userId
   });
-  Post.updateOne({ _id: req.params.id, creator: req.userId.userId }, post).then(result => {
-    if(result.nModified > 0) {
+  Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post).then(result => {
+    if(result.n > 0) {
       res.status(200).json({ message: 'Update successful!' });
     } else {
       res.status(401).json({ message: 'Not authorized!' });
@@ -97,7 +97,7 @@ exports.getPost = (req, res, next) => {
 }
 
 exports.deletePost = (req, res, next) => {
-  Post.deleteOne({ _id: req.params.id, creator: req.userId.userId }).then(result => {
+  Post.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(result => {
     if(result.n > 0) {
       res.status(200).json({ message: 'Post Deleted' });
     } else {
