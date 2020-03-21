@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/auth/auth.service';
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.css']
 })
-export class PostCreateComponent implements OnInit, OnDestroy{
+export class PostCreateComponent implements OnInit, OnDestroy {
   enteredTitle = '';
   enteredContent = '';
   post: Post;
