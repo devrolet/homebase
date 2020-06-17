@@ -22,7 +22,7 @@ exports.createPost = (req, res, next) => {
       message: 'Post Creation Failed'
     });
   });
-}
+};
 
 exports.updatePost = (req, res, next) => {
   let imagePath = req.body.imagePath;

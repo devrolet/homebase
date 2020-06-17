@@ -8,7 +8,7 @@ const userRoutes = require('./routes/user');
 
 const app = express();
 
-mongoose.connect("mongodb+srv://chill-admin:" + process.env.MONGO_ATLAS_PW + "@cluster0-i6d13.mongodb.net/homebase"
+mongoose.connect("mongodb+srv://chill-admin:" + process.env.MONGO_ATLAS_PW + "@cluster0-i6d13.mongodb.net/homebase", { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => {
     console.log('Connected to cloud database');

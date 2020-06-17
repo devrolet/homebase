@@ -14,9 +14,9 @@ export class PostListComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   isLoading = false;
   totalPosts = 0;
-  postsPerPage = 2;
+  postsPerPage = 25;
   currentPage = 1;
-  pageSizeOptions = [1, 2, 5, 10];
+  pageSizeOptions = [25, 50, 100];
   userIsAuthenticated = false;
   userId: string;
   private postsSub: Subscription;
