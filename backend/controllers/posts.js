@@ -8,6 +8,7 @@ exports.createPost = (req, res, next) => {
     imagePath: url + '/images/' + req.file.filename,
     creator: req.userData.userId
   });
+  console.log(post);
   post.save().then(createdPost => {
     res.status(201).json({
       message: 'Post Added Successfully',
@@ -50,7 +51,7 @@ exports.updatePost = (req, res, next) => {
       message: 'Could not update post'
     });
   });
-}
+};
 
 exports.getPosts = (req, res, next) => {
   const pageSize = +req.query.pagesize;
@@ -79,7 +80,7 @@ exports.getPosts = (req, res, next) => {
         message: 'Fetching posts failed'
       });
     });
-}
+};
 
 exports.getPost = (req, res, next) => {
   Post.findById(req.params.id).then(post => {
@@ -93,8 +94,8 @@ exports.getPost = (req, res, next) => {
     res.status(500).json({
       message: 'Fetching post failed'
     });
-  });;
-}
+  });
+};
 
 exports.deletePost = (req, res, next) => {
   Post.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(result => {
@@ -109,4 +110,4 @@ exports.deletePost = (req, res, next) => {
       message: 'Fetching posts failed'
     });
   }); 
-}
+};
